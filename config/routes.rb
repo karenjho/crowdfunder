@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'users/create'
+
+  get 'users/index'
+
+  get 'users/new'
+
+  get 'users/show'
+
   root 'projects#index'
 
   resources :projects
