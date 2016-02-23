@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'rewards/new'
+
+  get 'rewards/create'
+
+  get 'rewards/edit'
+
+  get 'rewards/update'
+
+  get 'rewards/destroy'
+
   root 'projects#index'
 
   resources :pledges, only: [:new, :create, :edit, :update, :destroy]
