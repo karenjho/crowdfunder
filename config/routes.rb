@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
   root 'projects#index'
+
+  resources :pledges, only: [:new, :create, :edit, :update, :destroy]
 
   resources :projects
   resources :users
