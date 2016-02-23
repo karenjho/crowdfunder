@@ -16,7 +16,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+
+    @project = Project.new
 
     if @project.save
       redirect_to projects_path, notice: "Project successfully created!"
@@ -25,13 +26,21 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def updated
+
+  def update
+
     if @project.update_attributes(project_params)
       redirect_to project_path(@project)
     else
       render :edit
     end
   end
+
+  def destroy
+    @project.destroy
+    redirect_to projects_path
+  end
+
 
   private
   def project_params
