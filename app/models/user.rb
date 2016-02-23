@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
   has_many :pledges
   has_many :projects, through: :pledge
   belongs_to :reward, through: :pledge
-  
+
 end
