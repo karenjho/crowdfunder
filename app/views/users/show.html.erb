@@ -1,2 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User Profile</h1>
+
+<div class="info">
+  <%= @user.name %><br>
+  <%= @user.email %>
+</div>
+
+<div class="pledges">
+<h2>Pledges</h2>
+<% @user.pledges.each do |p| %>
+<table>
+  <tr>
+    <th>Project Name</th>
+    <th>Pledge Amount</th>
+    <th>Project Deadline</th>
+  </tr>
+  <tr>
+    <td><%= p.project.name %></td>
+    <td><%= p.amount %></td>
+    <td><%= p.project.deadline %></td>
+  </tr>
+</table>
+</div>
