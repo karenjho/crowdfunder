@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+skip_before_action :require_login, only [:new, :create, :show]
   def new
     @user = User.new
   end
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to projects_url, notice: "Signed up!"
+      redirect_back_or_to root_path
     else
       render "new"
     end
