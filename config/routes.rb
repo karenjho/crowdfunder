@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pledges, only: [:new, :create, :edit, :update, :destroy]
+
   get 'users/new'
 
   get 'users/create'
