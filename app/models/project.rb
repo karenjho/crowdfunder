@@ -4,4 +4,6 @@ class Project < ActiveRecord::Base
   has_many :users, through: :pledges
 
   belongs_to :creator, class_name: "User"
+
+  accepts_nested_attributes_for :rewards, reject_if: :all_blank, allow_destroy: true
 end

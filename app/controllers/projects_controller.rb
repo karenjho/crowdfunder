@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def updated
+  def update
     if @project.update_attributes(project_params)
       redirect_to project_path(@project)
     else
@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project)
-                  .permit(:name, :description, :goal, :deadline)
+    params.require(:project).permit(:name, :description, :goal, :deadline,
+                                    rewards_attributes: [:name, :description, :threshold, :quantity, :_destroy])
   end
 end
