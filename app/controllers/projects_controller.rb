@@ -12,6 +12,9 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @categories = Category.all.map do |c|
+      [c.name,c.id]
+    end
   end
 
   def edit
@@ -47,7 +50,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :description, :goal, :deadline,
+    params.require(:project).permit(:name, :description, :goal, :deadline, :category_id,
                                     rewards_attributes: [:name, :description, :threshold, :quantity, :_destroy])
   end
 end

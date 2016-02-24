@@ -18,6 +18,14 @@
       <%= f.datetime_local_field :deadline %>
     </div>
 
+    <div id="categories" class="field">
+       <div class="nested-fields">
+          <%= f.label :category_id, "Category" %>
+          <%= f.select :category_id, @categories %>
+        </div>
+    </div>
+
+
     <h3>Rewards</h3>
     <div id="rewards">
       <%= f.fields_for :rewards do |f| %>
@@ -30,6 +38,9 @@
 
     <div class="action">
       <%= f.submit "Submit Project" %>
+    </div>
+
+
     </div>
 
   <% end %>

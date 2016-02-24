@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'categories/index'
+
+  get 'categories/new'
+
+  get 'categories/create'
+
+  get 'categories/show'
+
+  get 'categories/edit'
+
+  get 'categories/update'
+
   root 'projects#index'
 
 
