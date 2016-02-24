@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  skip_before_action :require_login, only: [:index, :show]
+  skip_before_action :require_login, only: [:index, :show, :new]
   def index
     @projects = Project.all
   end
