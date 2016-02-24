@@ -10,4 +10,13 @@ class Project < ActiveRecord::Base
   validates :name, :description, presence:true
   validates :goal, numericality: {only_integer: true}
   validates :deadline, presence:true
+
+
+  def goal_achieved?
+    self.goal - pledges_total <= 0
+  end
+
+  def pledges_total
+    self.pledges.sum(:amount)
+  end
 end
