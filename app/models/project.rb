@@ -6,4 +6,8 @@ class Project < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
 
   accepts_nested_attributes_for :rewards, reject_if: :all_blank, allow_destroy: true
+
+  validates :name, :description, presence:true
+  validates :goal, numericality: {only_integer: true}
+  validates :deadline, presence:true
 end

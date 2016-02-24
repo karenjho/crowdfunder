@@ -8,7 +8,8 @@ skip_before_action :require_login, only: [:new, :create, :show]
     @user = User.new(user_params)
 
     if @user.save
-      redirect_back_or_to root_path
+       redirect_back_or_to root_path
+
     else
       render "new"
     end
