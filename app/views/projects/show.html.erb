@@ -30,8 +30,6 @@
     <p><%= @project.category.name %></p>
   <% end %>
 
-  <%= button_to "Make a Pledge", new_pledge_path(@project) %>
-
 </div>
 
 <%= link_to "Edit", edit_project_path(@project)  %> |  <%= link_to "Delete", @project, method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %>
