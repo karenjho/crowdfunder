@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
   root 'projects#index'
-  #
-  # get 'user_sessions/new'
-  #
-  # get 'user_sessions/create'
-  #
-  # get 'user_sessions/destroy'
-  #
-  # get 'users/new'
 
   resources :projects
   resources :pledges, only: [:new, :create, :edit, :update, :destroy]

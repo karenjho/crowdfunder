@@ -22,7 +22,7 @@ skip_before_action :require_login, only: [:new, :create, :show]
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to users_show_path(@user)
+      redirect_to users_show_path
     else
       render :edit
     end
@@ -33,6 +33,7 @@ skip_before_action :require_login, only: [:new, :create, :show]
   end
 
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
   end
 
