@@ -2,9 +2,21 @@ Rails.application.routes.draw do
 
   root 'projects#index'
 
+  resources :projects
+  
   resources :pledges, only: [:new, :create, :edit, :update, :destroy]
 
+<<<<<<< HEAD
   resources :projects
+=======
+  resources :users
+  resources :user_sessions, only: [:new, :create, :destroy]
+
+  resources :rewards, only: [:new, :create, :edit, :update, :destroy]
+
+  get 'login' => 'user_sessions#new', :as => :login
+  get 'logout' => 'user_sessions#destroy', :as => :logout
+>>>>>>> 62b104c145a396aa1fbc0d8f3a0bb6003cd03b88
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

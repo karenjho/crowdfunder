@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+skip_before_action :require_login, only: [:new, :create, :show]
   def new
     @user = User.new
   end
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to
+      redirect_back_or_to root_path
     else
       render "new"
     end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to users_show_path(@user)
+      redirect_to users_show_path
     else
       render :edit
     end
@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
   end
 
