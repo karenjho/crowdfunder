@@ -1,0 +1,22 @@
+<div class="nested-fields">
+
+    <div class="field">
+      <%= f.label :name, "Reward Name" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :description, "Description" %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :threshold, "Threshold ($)" %>
+      <%= f.number_field :threshold %>
+    </div>
+    <div class="field">
+      <%= f.label :quantity, "Quantity Available" %>
+      <%= f.number_field :quantity %>
+    </div>
+
+    <%= link_to_remove_association "Remove Reward", f %>
+
+</div>
