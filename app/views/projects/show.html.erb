@@ -8,3 +8,5 @@
     <h4>project Goal: </h4><%= @project.goal  %> <br>
     <h4>Project End-time: </h4>$<%= @project.deadline %> <br>
   </div>
+
+  <%= link_to "Edit", edit_project_path(@project)  %> | <%= link_to "Delete", @project, method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %>
