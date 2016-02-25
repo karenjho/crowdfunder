@@ -2,7 +2,7 @@
 
   <h1><%= @project.name %></h1>
   <p>End_date: <%= @project.end_date.strftime('%A, %B %C at %r')  %></p>
-  <p>Time left: <%= distance_of_time_in_words(Time.now - @project.end_date) %></p>
+  <p>Time left:<strong> <%= distance_of_time_in_words(Time.now - @project.end_date) %></strong></p>
     <p>What it's about: <%= @project.description %></p>
 
 
