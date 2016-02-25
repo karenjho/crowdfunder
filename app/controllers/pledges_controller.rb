@@ -10,13 +10,21 @@ class PledgesController < ApplicationController
     @pledge = @reward.pledges.build(pledge_params)
     @pledge.user = current_user
 
-    if @pledge.adequate_amount?
-      @pledge.save
-      redirect_to project_path(@reward.project), notice: "Thank you for your pledge!"
+    if @reward.quantity_available?
+
+      if @pledge.adequate_amount?
+        @pledge.save
+        redirect_to project_path(@reward.project), notice: "Thank you for your pledge!"
+      else
+        flash[:alert] = "Sorry, you must pledge at least $#{@reward.threshold} to receive this reward."
+        render :new
+      end
+
     else
-      flash[:alert] = "Sorry, you must pledge at least $#{@reward.threshold} to receive this reward."
+      flash[:alert] = "Sorry, this reward is sold out."
       render :new
     end
+    
   end
 
   def edit
