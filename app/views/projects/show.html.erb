@@ -30,7 +30,7 @@
     <p><%= @project.category.name %></p>
   <% end %>
 
-  <%= button_to "Make a Pledge", new_pledge_path(@project) %>
+  <%= link_to button_tag("Make a Pledge"), new_project_pledge_path(@project) %>
 
 </div>
 

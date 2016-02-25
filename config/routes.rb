@@ -1,28 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'categories/index'
-
-  get 'categories/new'
-
-  get 'categories/create'
-
-  get 'categories/show'
-
-  get 'categories/edit'
-
-  get 'categories/update'
-
-  root 'projects#index'
-
-
-  resources :pledges, only: [:new, :create, :edit, :update, :destroy]
-
-  resources :projects
+  resources :projects do
+    resources :pledges, only: [:new, :create, :edit, :update, :destroy]
+  end
 
   resources :users
   resources :user_sessions, only: [:new, :create, :destroy]
 
   resources :rewards, only: [:new, :create, :edit, :update, :destroy]
+
+  resource :categories, only: [:new, :create, :show, :edit, :update, :destroy]
 
   get 'login' => 'user_sessions#new', :as => :login
   get 'logout' => 'user_sessions#destroy', :as => :logout
