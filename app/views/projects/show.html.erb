@@ -1,8 +1,17 @@
 <div class="show_project">
+  <%@user = current_user %>
+  <%if @user.pledges.any? %>
+    $<%= @user.pledges.sum(:amount) %>
+  <%end%>
+
+<p><%= @project.creator.name %> needs your money to make this</p>
+
+
+
+
+
 
   <h1><%= @project.name %></h1>
-  <p>End_date: <%= @project.end_date.strftime('%A, %B %C at %r')  %></p>
-  <p>Time left:<strong> <%= distance_of_time_in_words(Time.now - @project.end_date) %></strong></p>
     <p>What it's about: <%= @project.description %></p>
 
 
@@ -14,7 +23,8 @@
   <p><%= @project.percent_achieved %>% Funded</p>
   <p><%= @project.pledges_total %> / <%= @project.goal %></p>
 
-  <h2>Ends <%= @project.end_date %></h2>
+  <p>End date: <%= @project.end_date.strftime('%A, %B %C at %r')  %></p>
+  <p>Time left:<strong> <%= distance_of_time_in_words(Time.now - @project.end_date) %></strong></p>
 
   <% @project.rewards.each do |reward| %>
     <ul>

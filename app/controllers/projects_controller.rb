@@ -3,8 +3,12 @@ class ProjectsController < ApplicationController
   skip_before_action :require_login, only: [:index, :show, :new]
 
   def index
-    @projects = Project.all
-    @categories = Category.all
+    @projects = if params[:search]
+      Project.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+    else
+      @projects = Project.all
+      @categories = Category.all
+    end
   end
 
   def show
