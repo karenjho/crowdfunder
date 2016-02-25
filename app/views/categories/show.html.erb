@@ -1,5 +1,5 @@
 <h1><%= @category.name %></h1>
-<% @category.project.each do |c| %>
+<% @category.projects.each do |c| %>
 
 <h2>Category : <%= link_to "#{c.name}", project_path(c.id) %></h2>
 

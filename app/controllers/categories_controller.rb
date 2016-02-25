@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
       redirect_to categories_url
     else
       render:new
+    end
   end
 
   def show
