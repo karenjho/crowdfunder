@@ -1,9 +1,11 @@
 <div class="show_project">
 
   <h1><%= @project.name %></h1>
+  <p>Deadline: <%= @project.deadline.strftime('%A, %B %C at %r')  %></p>
+  <p>Time left: <%= distance_of_time_in_words(Time.now - @project.deadline) %></p>
+    <p>What it's about: <%= @project.description %></p>
 
-  <p><%= @project.description %></p>
-  
+
   <h2>Goal:</h2>
   <% if @project.goal_achieved? %>
     <p>Project has been fully funded!</p>

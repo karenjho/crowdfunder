@@ -20,4 +20,6 @@ class Project < ActiveRecord::Base
   def pledges_total
     self.pledges.sum(:amount)
   end
+
+
 end

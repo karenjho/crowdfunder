@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link_to 'Main Page', root_path %><br>
   <% if current_user %>
   Signed in as <%= current_user.name %>. <%= link_to 'Logout', :logout, method: :post %>
   <%else%>
