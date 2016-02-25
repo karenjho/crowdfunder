@@ -11,7 +11,7 @@
     <p>Project has been fully funded!</p>
   <% else %>
   <% end %>
-  <p><%= @project.pledges_total / @project.goal * 100 %>% Funded</p>
+  <p><%= @project.percent_achieved %>% Funded</p>
   <p><%= @project.pledges_total %> / <%= @project.goal %></p>
 
   <h2>Ends <%= @project.end_date %></h2>
