@@ -1,7 +1,7 @@
 <div class="show_project">
 
   <h1><%= @project.name %></h1>
-  <p>Deadline: <%= @project.end_date.strftime('%A, %B %C at %r')  %></p>
+  <p>End_date: <%= @project.end_date.strftime('%A, %B %C at %r')  %></p>
   <p>Time left: <%= distance_of_time_in_words(Time.now - @project.end_date) %></p>
     <p>What it's about: <%= @project.description %></p>
 

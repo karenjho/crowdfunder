@@ -6,4 +6,8 @@ class Pledge < ActiveRecord::Base
     self.amount >= reward.threshold
   end
 
+  def quantity_available?
+    self.pledges.size < self.quantity
+  end
+
 end
