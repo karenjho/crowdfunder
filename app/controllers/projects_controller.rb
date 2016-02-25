@@ -27,8 +27,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-
     @project = Project.new(project_params)
+    @project.creator = current_user
 
     if @project.save
       redirect_to projects_path, notice: "Project successfully created!"
@@ -56,7 +56,8 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :description, :goal, :end_date, :category_id,
+    params.require(:project).permit(:name, :description, :goal, :deadline, :creator_id, :category_id,
                                     rewards_attributes: [:id, :name, :description, :threshold, :quantity, :_destroy])
+
   end
 end
