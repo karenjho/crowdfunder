@@ -1,0 +1,47 @@
+<h1>User Profile</h1>
+
+<div class="info">
+  <%= @user.name %><br>
+  <%= @user.email %>
+</div>
+
+
+<% if @user.pledges.any? %>
+<div class="pledges">
+<h2>Pledges</h2>
+<% @user.pledges.each do |pledge| %>
+  <table>
+    <tr>
+      <th>Project Name</th>
+      <th>Pledge Amount</th>
+      <th>Project Deadline</th>
+    </tr>
+    <tr>
+      <td><%= pledge.@project.name %></td>
+      <td><%= pledge.amount %></td>
+      <td><%= pledge.project.end_date %></td>
+    </tr>
+  </table>
+  </div>
+  <% end %>
+<% end %>
+
+<% if @user.created_projects.any? %>
+  <div class="projects">
+  <h2>Pledges</h2>
+  <% @user.pledges.each do |project| %>
+    <table>
+      <tr>
+        <th>Project Name</th>
+        <th>Goal Amount</th>
+        <th>Project Deadline</th>
+      </tr>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.goal %></td>
+        <td><%= project.end_date %></td>
+      </tr>
+    </table>
+    </div>
+  <% end %>
+<% end %>

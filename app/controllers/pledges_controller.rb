@@ -1,4 +1,5 @@
 class PledgesController < ApplicationController
+
   before_action :load_project, only: [:create]
   before_action :load_pledge, only: [:edit, :update, :destroy]
 

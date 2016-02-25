@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 5}
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
+
+  Roles = [:admin, :project_owner, :default]
 end
