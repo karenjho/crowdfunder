@@ -29,6 +29,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.rewards.build(Reward.dummy_attrs)
     @project.creator = current_user
 
     if @project.save

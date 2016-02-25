@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :categories
 
   get 'login' => 'user_sessions#new', :as => :login
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  delete 'logout' => 'user_sessions#destroy', :as => :logout
 
 
   # The priority is based upon order of creation: first created -> highest priority.
