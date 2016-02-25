@@ -1,5 +1,6 @@
 class PledgesController < ApplicationController
-  before_action :load_reward
+
+  before_action :load_project, only: [:create]
   before_action :load_pledge, only: [:edit, :update, :destroy]
 
   def new
@@ -7,8 +8,9 @@ class PledgesController < ApplicationController
   end
 
   def create
-    @pledge = @reward.pledges.build(pledge_params)
+    @pledge = @project.pledges.build(pledge_params)
     @pledge.user = current_user
+
 
     if @reward.quantity_available?
 
@@ -24,7 +26,7 @@ class PledgesController < ApplicationController
       flash[:alert] = "Sorry, this reward is sold out."
       render :new
     end
-    
+
   end
 
   def edit
@@ -49,8 +51,8 @@ class PledgesController < ApplicationController
     params.require(:pledge).permit(:amount)
   end
 
-  def load_reward
-    @reward = Reward.find(params[:reward_id])
+  def load_project
+    @project = Project.find(params[:project_id])
   end
 
   def load_pledge

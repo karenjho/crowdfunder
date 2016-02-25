@@ -9,7 +9,20 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
-  validates :password, length: {minimum: 5}
-  validates :password, confirmation: true
-  validates :password_confirmation, presence: true
+  validates :password, length: {minimum: 5}, on: :create
+  validates :password, confirmation: true, on: :create
+  validates :password_confirmation, presence: true, on: :create
+
+  Roles = [:admin, :project_owner, :default]
+
+  def admin?
+    self.role == 'admin'
+  end
+
+  def project_owner?
+    self.created_projects.any?
+  end
+
+
+
 end

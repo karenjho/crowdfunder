@@ -1,6 +1,5 @@
 class Reward < ActiveRecord::Base
   belongs_to :project
-
   has_many :pledges
 
   def self.dummy_attrs
