@@ -1,5 +1,6 @@
 class PledgesController < ApplicationController
 
+  before_action :load_reward
   before_action :load_project, only: [:create]
   before_action :load_pledge, only: [:edit, :update, :destroy]
 
@@ -8,7 +9,7 @@ class PledgesController < ApplicationController
   end
 
   def create
-    @pledge = @project.pledges.build(pledge_params)
+    @pledge = @reward.pledges.build(pledge_params)
     @pledge.user = current_user
 
 
@@ -16,7 +17,7 @@ class PledgesController < ApplicationController
 
       if @pledge.adequate_amount?
         @pledge.save
-        redirect_to project_path(@reward.project), notice: "Thank you for your pledge!"
+        redirect_to project_path(@project), notice: "Thank you for your pledge!"
       else
         flash[:alert] = "Sorry, you must pledge at least $#{@reward.threshold} to receive this reward."
         render :new
@@ -52,10 +53,14 @@ class PledgesController < ApplicationController
   end
 
   def load_project
-    @project = Project.find(params[:project_id])
+    @project = @reward.project
   end
 
   def load_pledge
     @pledge = Pledge.find(params[:id])
+  end
+
+  def load_reward
+    @reward = Reward.find(params[:reward_id])
   end
 end

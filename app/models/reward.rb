@@ -10,4 +10,8 @@ class Reward < ActiveRecord::Base
       description: "Our undying gratitude."
     }
   end
+
+  def quantity_available?
+    self.pledges.size < self.quantity
+  end
 end
