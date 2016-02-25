@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.integer :goal
-      t.datetime :deadline
+      t.datetime :end_date
 
       t.timestamps null: false
     end

@@ -14,8 +14,8 @@
       <%= f.number_field :goal %>
     </div>
     <div class="field">
-      <%= f.label :deadline, "Deadline" %>
-      <%= f.date_field :deadline %>
+      <%= f.label :end_date, "Deadline" %>
+      <%= f.date_field :end_date %>
     </div>
 
     <div id="categories" class="field">
@@ -28,8 +28,8 @@
 
     <h3>Rewards</h3>
     <div id="rewards">
-      <%= f.fields_for :rewards do |f| %>
-        <%= render 'rewards_fields', f: reward %>
+      <%= f.fields_for :rewards do |reward| %>
+        <%= render 'reward_fields', f: reward %>
       <% end %>
       <div class="links">
         <%= link_to_add_association "Add Reward", f, :rewards %>
