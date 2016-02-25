@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
-  has_many :rewards
-  has_many :pledges, through: :rewards
+  has_many :rewards,  dependent: :destroy
+  has_many :pledges, through: :rewards,  dependent: :destroy
   has_many :users, through: :pledges
 
   belongs_to :creator, class_name: "User"
@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
   def pledges_total
     self.pledges.sum(:amount)
   end
-  
+
   def percent_achieved
     percent = pledges_total.to_f * 100 / self.goal.to_f
     percent.round(2)

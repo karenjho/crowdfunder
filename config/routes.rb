@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :pledges, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resource :categories, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :categories
 
   get 'login' => 'user_sessions#new', :as => :login
   get 'logout' => 'user_sessions#destroy', :as => :logout
