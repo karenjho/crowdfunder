@@ -10,14 +10,15 @@ class Ability
       if user.admin?
         can :manage, :all
       elsif user.project_owner?
-        can :manage, Project, {:creator_id => user.id}
+        can :crud, Project, {:creator_id => user.id}
         can :crud, User, {:id => user.id}
         can :crud, Reward do |reward|
           reward.project.creator == user
         end
         else
+        can :create Project
         can :read, Project, Reward
-        can :read, Pledge, {:user_id =>user.id}
+        can :read, Pledge, {:user_id => user.id}
       end
 
 
