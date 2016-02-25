@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
 
   validates :name, :description, presence:true
   validates :goal, numericality: {only_integer: true}
-  validates :deadline, presence:true
+  validates :end_date, presence:true
 
 
   def goal_achieved?

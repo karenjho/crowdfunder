@@ -12,7 +12,7 @@
   <p><%= @project.pledges_total / @project.goal * 100 %>% Funded</p>
   <p><%= @project.pledges_total %> / <%= @project.goal %></p>
 
-  <h2>Ends <%= @project.deadline %></h2>
+  <h2>Ends <%= @project.end_date %></h2>
 
   <% @project.rewards.each do |reward| %>
     <ul>
