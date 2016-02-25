@@ -22,6 +22,7 @@ class Project < ActiveRecord::Base
   end
 
   def percent_achieved
-    pledges_total / self.goal * 100
+    percent = pledges_total.to_f * 100 / self.goal.to_f
+    percent.round(2)
   end
 end
