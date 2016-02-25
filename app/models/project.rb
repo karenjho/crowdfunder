@@ -20,4 +20,8 @@ class Project < ActiveRecord::Base
   def pledges_total
     self.pledges.sum(:amount)
   end
+
+  def percent_achieved
+    pledges_total / self.goal * 100
+  end
 end
