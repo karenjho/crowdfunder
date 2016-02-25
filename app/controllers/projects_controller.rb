@@ -14,12 +14,16 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @categories = Category.all
+    @categories = Category.all.map do |c|
+      [c.name,c.id]
+    end
   end
 
   def edit
     @project = Project.find(params[:id])
-    @categories = Category.all
+    @categories = Category.all.map do |c|
+      [c.name,c.id]
+    end
   end
 
   def create
@@ -34,7 +38,8 @@ class ProjectsController < ApplicationController
   end
 
   def update
-      @project = Project.find(params[:id])
+    @project = Project.find(params[:id])
+
     if @project.update_attributes(project_params)
       redirect_to project_path(@project)
     else
@@ -52,6 +57,6 @@ class ProjectsController < ApplicationController
   private
   def project_params
     params.require(:project).permit(:name, :description, :goal, :deadline, :category_id,
-                                    rewards_attributes: [:name, :description, :threshold, :quantity, :_destroy])
+                                    rewards_attributes: [:id, :name, :description, :threshold, :quantity, :_destroy])
   end
 end
