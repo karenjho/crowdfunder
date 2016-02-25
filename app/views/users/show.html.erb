@@ -26,10 +26,10 @@
   <% end %>
 <% end %>
 
-<% if @user.created_projects.any? %>
+
+<h2>Projects</h2>
   <div class="projects">
-  <h2>Pledges</h2>
-  <% @user.pledges.each do |project| %>
+  <% @user.projects.each do |project| %>
     <table>
       <tr>
         <th>Project Name</th>
@@ -44,4 +44,3 @@
     </table>
     </div>
   <% end %>
-<% end %>
