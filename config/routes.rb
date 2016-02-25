@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :projects do
-    resources :pledges, only: [:new, :create, :edit, :update, :destroy]
-  end
+  resources :projects
 
   resources :users
   resources :user_sessions, only: [:new, :create, :destroy]
 
-  resources :rewards, only: [:new, :create, :edit, :update, :destroy]
+  resources :rewards, only: [:new, :create, :edit, :update, :destroy] do
+    resources :pledges, only: [:new, :create, :edit, :update, :destroy]
+  end
 
   resource :categories, only: [:new, :create, :show, :edit, :update, :destroy]
 

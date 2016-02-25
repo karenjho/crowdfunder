@@ -19,7 +19,7 @@
       <li>
         Pledge $<%= reward.threshold %> or more<br>
         <%= reward.quantity %> Backers<br>
-        <strong><%= reward.name %></strong><br>
+        <%= link_to reward.name, new_reward_pledge_path(reward) %></strong><br>
         <%= reward.description %>
       </li>
     </ul>
@@ -29,8 +29,6 @@
     <h4>Category</h4>
     <p><%= @project.category.name %></p>
   <% end %>
-
-  <%= link_to button_tag("Make a Pledge"), new_project_pledge_path(@project) %>
 
 </div>
 
