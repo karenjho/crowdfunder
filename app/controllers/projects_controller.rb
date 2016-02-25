@@ -14,13 +14,12 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @categories = Category.all.map do |c|
-      [c.name,c.id]
-    end
+    @categories = Category.all
   end
 
   def edit
     @project = Project.find(params[:id])
+    @categories = Category.all
   end
 
   def create
