@@ -31,6 +31,9 @@ gem 'sorcery'
 
 gem 'cancancan', '~> 1.10'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -47,7 +50,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
-  # gem 'pry-rails'
+  gem 'pry-rails'
 
 end
 

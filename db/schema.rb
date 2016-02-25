@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225035650) do
+ActiveRecord::Schema.define(version: 20160225155538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,12 @@ ActiveRecord::Schema.define(version: 20160225035650) do
     t.text     "description"
     t.integer  "goal"
     t.datetime "end_date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "creator_id"
     t.integer  "category_id"
     t.datetime "start_date"
+    t.string   "featured_image"
   end
 
   add_index "projects", ["creator_id"], name: "index_projects_on_creator_id", using: :btree

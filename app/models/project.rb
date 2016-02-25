@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  mount_uploader :featured_image, ImageUploader
   has_many :rewards,  dependent: :destroy
   has_many :pledges, through: :rewards,  dependent: :destroy
   has_many :users, through: :pledges
