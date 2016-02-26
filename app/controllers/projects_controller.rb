@@ -7,8 +7,8 @@ class ProjectsController < ApplicationController
       Project.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
     else
       Project.all
-      @categories = Category.all
     end
+    @categories = Category.all
   end
 
 
