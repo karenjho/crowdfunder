@@ -6,10 +6,11 @@ class ProjectsController < ApplicationController
     @projects = if params[:search]
       Project.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
     else
-      @projects = Project.all
+      Project.all
       @categories = Category.all
     end
   end
+
 
   def show
     @project = Project.find(params[:id])
