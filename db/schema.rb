@@ -72,6 +72,5 @@ ActiveRecord::Schema.define(version: 20160225195812) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
-  add_foreign_key "pledges", "users"
   add_foreign_key "rewards", "projects"
 end
