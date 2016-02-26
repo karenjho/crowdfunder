@@ -10,7 +10,6 @@
 <% if @user.created_projects.any? %>
   <div class="projects">
     <h2>Projects</h2>
-  <% @user.created_projects.each do |project| %>
     <table>
       <tr>
         <th>Project Name</th>
@@ -19,6 +18,7 @@
         <th>Project Deadline</th>
       </tr>
       <tr>
+        <% @user.created_projects.each do |project| %>
         <td><%= project.name %></td>
         <td>$<%= project.pledges_total %></td>
         <td>$<%= project.goal %></td>
