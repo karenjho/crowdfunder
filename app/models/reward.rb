@@ -4,7 +4,7 @@ class Reward < ActiveRecord::Base
 
   def self.dummy_attrs
     {
-      threshold: 0,
+      threshold: 1,
       quantity: 9999,
       name: "Best reward ever!",
       description: "Our undying gratitude."

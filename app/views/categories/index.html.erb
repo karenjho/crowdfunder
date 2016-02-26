@@ -1,5 +1,7 @@
 <h1>All Categories</h1>
 
+<%= link_to 'New Project', new_project_path %>
+
 <% @categories.each do |c| %>
   <%= link_to "#{c.name}", category_path(c.id) %>
   <% end %>
