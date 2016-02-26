@@ -2,10 +2,15 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
 
+  include Sorcery::TestHelpers::Rails::Integration
+  include Sorcery::TestHelpers::Rails::Controller
+
   setup do
     @user = FactoryGirl.create(:user)
-    # login method with sorcery? look up sorcery testing for log in/session creation
+
+    login_user(user = @user, route = login_url)  # replace with your login url path
   end
+
   # test "should get index" do
   #   get :index
   #   assert_response :success
@@ -16,13 +21,13 @@ class ProjectsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
   #
-  # test "post create fails with empty params" do
-  #   post :create, params: {}
-  #   assert_response :failure
-  # end
+  test "post create fails with empty params" do
+    post :create, project: {}
+    assert_response :error
+  end
 
-  test "post create adds reward with threshold 1" do
-    post :create, params: FactoryGirl.attributes_for(:project)
+  test "post create adds dummy reward with threshold 1" do
+    post :create, project: FactoryGirl.attributes_for(:project)
     assert_equal( Project.last.rewards.first.threshold, 1 )
   end
   #
