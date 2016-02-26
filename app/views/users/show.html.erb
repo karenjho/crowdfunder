@@ -21,7 +21,7 @@
           <tr>
             <td><%= link_to pledged_project.name, project_path(pledged_project) %></td>
             <td>$<%= pledged_project.pledges.sum(:amount) %></td>
-            <td><%= link_to pledged_project.rewards.name  %></td>
+            <td><%= link_to @user.reward_for_project(pledged_project).name, project_path(pledged_project) %></td>
             <td>$<%= pledged_project.goal %> (<%= pledged_project.percent_achieved(pledged_project.pledges_total) %>% Funded)</td>
             <td><%= pledged_project.end_date.strftime('%A, %B %C at %r') %> (<%= distance_of_time_in_words(Time.now - pledged_project.end_date) %> left)</td>
           </tr>
