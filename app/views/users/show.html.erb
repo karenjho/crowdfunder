@@ -8,23 +8,24 @@
   <%if @user.pledges.any? %>
       <div class="pledges">
         <h2>Projects Backed</h2>
-        <table>
+        <table border=1 cellspacing=0 cellpadding=10>
           <tr>
             <th>Project Name</th>
             <th>Amount Pledged</th>
-            <th>Reward Earned</th>
             <th>Goal Amount</th>
+            <th>Reward Earned</th>
             <th>Project Deadline</th>
           </tr>
 
-    <% @user.projects.each do |pledged_project| %>
-          <tr>
-            <td><%= link_to pledged_project.name, project_path(pledged_project) %></td>
-            <td>$<%= pledged_project.pledges.sum(:amount) %></td>
-            <td><%= link_to @user.reward_for_project(pledged_project).name, project_path(pledged_project) %></td>
-            <td>$<%= pledged_project.goal %> (<%= pledged_project.percent_achieved(pledged_project.pledges_total) %>% Funded)</td>
-            <td><%= pledged_project.end_date.strftime('%A, %B %C at %r') %> (<%= distance_of_time_in_words(Time.now - pledged_project.end_date) %> left)</td>
-          </tr>
+          <% @user.projects.each do |pledged_project| %>
+            <tr>
+              <td><%= link_to pledged_project.name, project_path(pledged_project) %></td>
+              <td>$<%= pledged_project.pledges.sum(:amount) %></td>
+              <td>$<%= pledged_project.goal %> (<%= pledged_project.percent_achieved(pledged_project.pledges_total) %>% Funded)</td>
+              <td><%= link_to @user.reward_for_project(pledged_project).name, project_path(pledged_project) %></td>
+              <td><%= pledged_project.end_date.strftime('%A, %B %C at %r') %><br>
+                (<%= distance_of_time_in_words(Time.now - pledged_project.end_date) %> left)</td>
+            </tr>
           <% end %>
           <tr>
             <th>Total Amount Pledged:</th>
@@ -34,20 +35,23 @@
         </div>
     <% end %>
 
+
     <% if @user.created_projects.any? %>
       <div class="projects">
         <h2>Projects Created</h2>
-        <table>
+        <table border=1 cellspacing=0 cellpadding=10>
           <tr>
             <th>Project Name</th>
             <th>Total Pledged</th>
             <th>Project Deadline</th>
           </tr>
+
           <% @user.created_projects.each do |project| %>
           <tr>
             <td><%= link_to project.name, project_path(project) %></td>
             <td>$<%= project.pledges_total %> / $<%= project.goal %> (<%= project.percent_achieved(project.pledges_total) %>% Funded)</td>
-            <td><%= project.end_date.strftime('%A, %B %C at %r') %> (<%= distance_of_time_in_words(Time.now - project.end_date) %> left)</td>
+            <td><%= project.end_date.strftime('%A, %B %C at %r') %><br>
+               (<%= distance_of_time_in_words(Time.now - project.end_date) %> left)</td>
             <td><%= link_to "Edit", edit_project_path(project) %></td>
             <td><%= link_to "Delete Project", project_path(project), {method: :delete, data: {confirm: "ARE YOU SURE? This will delete all pledges and reward records for this project. This cannot be undone."}}%></td>
           </tr>
