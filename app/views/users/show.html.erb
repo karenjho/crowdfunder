@@ -5,28 +5,50 @@
   <%= @user.email %>
 </div>
 
+  <%if @user.pledges.any? %>
+      <div class="pledges">
+        <h2>Projects Backed</h2>
+        <table>
+          <tr>
+            <th>Project Name</th>
+            <th>Total Pledged</th>
+            <th>Goal Amount</th>
+            <th>Project Deadline</th>
+          </tr>
+    <% @user.pledges.each do |pledge| %>
+          <tr>
+            <td><%= pledge.reward.project.name %></td>
+            <td>$<%= pledge.amount %></td>
+            <td>$<%= pledge.reward.project.goal %></td>
+            <td><%= pledge.reward.project.end_date.strftime('%A, %B %C at %r') %>
+          </tr>
+          <tr>
+            <% end %>
+            <th>Total Pledges Made:</th>
+            <td>$<%= @user.pledges.sum(:amount) %></td>
+          </tr>
+        </table>
+        </div>
+    <% end %>
 
-
-<% if @user.created_projects.any? %>
-  <div class="projects">
-    <h2>Projects</h2>
-  <% @user.created_projects.each do |project| %>
-    <table>
-      <tr>
-        <th>Project Name</th>
-        <th>Total Pledged</th>
-        <th>Goal Amount</th>
-        <th>Project Deadline</th>
-      </tr>
-      <tr>
-        <td><%= project.name %></td>
-        <td>$<%= project.pledges_total %></td>
-        <td>$<%= project.goal %></td>
-        <td><%= project.end_date.strftime('%A, %B %C at %r') %></td>
-        <td><%= link_to "Edit", edit_project_path(project) %></td>
-        <td><%= link_to "Delete Project", project_path(project), {method: :delete, data: {confirm: "ARE YOU SURE? This will delete all pledges and reward records for this project. This cannot be undone."}}%></td>
-      </tr>
-    </table>
-    </div>
-  <% end %>
-<% end %>
+    <% if @user.created_projects.any? %>
+      <div class="projects">
+        <h2>Projects</h2>
+        <table>
+          <tr>
+            <th>Project Name</th>
+            <th>Total Pledged</th>
+            <th>Project Deadline</th>
+          </tr>
+          <% @user.created_projects.each do |project| %>
+          <tr>
+            <td><%= project.name %></td>
+            <td>$<%= project.pledges_total %> / $<%= project.goal %> (<%= project.percent_achieved(project.pledges_total) %>% Funded)</td>
+            <td><%= project.end_date.strftime('%A, %B %C at %r') %> (<%= distance_of_time_in_words(Time.now - project.end_date) %> left)</td>
+            <td><%= link_to "Edit", edit_project_path(project) %></td>
+            <td><%= link_to "Delete Project", project_path(project), {method: :delete, data: {confirm: "ARE YOU SURE? This will delete all pledges and reward records for this project. This cannot be undone."}}%></td>
+          </tr>
+          <% end %>
+        </table>
+        </div>
+    <% end %>

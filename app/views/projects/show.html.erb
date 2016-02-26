@@ -5,10 +5,10 @@
     $<%= @user.pledges.sum(:amount) %>
   <%end%>
 <% end %>
-<p><%= @project.creator.name %> needs your money to make this</p>
-
 
   <h1><%= @project.name %></h1>
+
+  <p><%= @project.creator.name %> needs your money to make this</p>
 
   <img src="<%= @project.featured_image %>" />
   <p>End_date: <%= @project.end_date.strftime('%A, %B %C at %r')  %></p>
