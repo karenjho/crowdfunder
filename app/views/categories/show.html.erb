@@ -1,9 +1,19 @@
 <h1><%= @category.name %></h1>
-<% @category.projects.each do |c| %>
 
-<h2>Projects</h2>
+<h1><small><%= page_entries_info @projects %></small></h1>
+
+<% @category.projects.each do |c| %>
+<h2>Project</h2>
+
 <%= link_to "#{c.name}", project_path(c.id) %>
 
 <% end %>
 
-<%= link_to "Edit", edit_category_path(@category)  %> |  <%= link_to "Delete", @category, method: :delete, data: {confirm: "Are you sure?"} %>
+<%= paginate @projects %>
+
+
+
+
+
+
+ <!-- <%= link_to "Edit", edit_category_path(@category)  %> |  <%= link_to "Delete", @category, method: :delete, data: {confirm: "Are you sure?"} %> -->

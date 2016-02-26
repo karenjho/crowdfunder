@@ -10,8 +10,14 @@ class ProjectsController < ApplicationController
     end
 
     @categories = Category.all
-  end
 
+    @projects = @projects.order('projects.created_at DESC').page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def show
     @project = Project.find(params[:id])

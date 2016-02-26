@@ -31,6 +31,8 @@ gem 'sorcery'
 
 gem 'cancancan', '~> 1.10'
 
+gem 'faker'
+
 
 gem 'kaminari'
 gem 'carrierwave'

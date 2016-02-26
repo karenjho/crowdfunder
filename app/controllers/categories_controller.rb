@@ -19,6 +19,13 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+
+  @projects = @category.projects.order('projects.created_at DESC').page(params[:page])
+
+  respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit

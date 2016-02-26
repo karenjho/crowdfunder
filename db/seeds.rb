@@ -5,23 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create()
 
-# User.destroy_all
-# Project.destroy_all
-#
-# User.create!({
-#   email: "example@bitmakerlabs.com",
-#   name: "Example User",
-#   password: "pass",
-#   password_confirmation: "pass"
-#   }
-#   )
-#
-# 50.times do |i|
-#
-# Project.create({
-#   name: "Project#{i}",
-#   description: "Description#{i}",
-#   threshold: i
-# })
-#   end
+100.times do
+  Project.create({
+    name: Faker::Company.catch_phrase,
+    description: "#{Faker::Company.bs} from #{Faker::Company.name} #{Faker::Company.suffix}",
+    goal: rand(1000),
+    end_date: Faker::Date.between(100.year.ago, Date.today + 50),
+    start_date: Faker::Date.between(100.year.ago, Date.today + 50),
+    creator_id: 1,
+    category_id: rand(8)
+    }
+  )
+end
