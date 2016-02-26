@@ -8,7 +8,7 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   # test "dummy reward created with threshold of 1" do
-  #   assert_equal( @project.rewards.last.threshold, 1 )
+  #   assert_equal( @project.rewards.first.threshold, 1 )
   # end
 
   test "goal achieved when pledge sum exceeds it" do
