@@ -25,13 +25,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit
-    @project = Project.find(params[:id])
-    @categories = Category.all.map do |c|
-      [c.name,c.id]
-    end
-  end
-
   def create
     @project = Project.new(project_params)
     @project.rewards.build(Reward.dummy_attrs)
@@ -41,6 +34,13 @@ class ProjectsController < ApplicationController
       redirect_to projects_path, notice: "Project successfully created!"
     else
       render :new
+    end
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+    @categories = Category.all.map do |c|
+      [c.name,c.id]
     end
   end
 

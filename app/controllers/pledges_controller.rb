@@ -16,7 +16,7 @@ class PledgesController < ApplicationController
 
     if @reward.quantity_available?
 
-      if @pledge.adequate_amount?
+      if @pledge.adequate_amount?(@reward)
         @pledge.save
         redirect_to project_path(@project), notice: "Thank you for your pledge!"
       else

@@ -51,6 +51,9 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
 
+  # Use FactoryGirl for testing
+  gem "factory_girl_rails"
+
 end
 
 group :development do

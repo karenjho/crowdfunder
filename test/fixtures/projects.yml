@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
-  goal: 1
-  end_date: 2016-02-22 15:14:27
-
-two:
-  name: MyString
-  description: MyText
-  goal: 1
-  end_date: 2016-02-22 15:14:27
+# one:
+#   name: Painting
+#   description: Thing to see
+#   goal: 1000
+#   end_date: 2016-02-22 15:14:27
+#
+# two:
+#   name: Restaurant
+#   description: Place to eat
+#   goal: 2000
+#   end_date: 2016-02-25 15:14:27
