@@ -6,6 +6,7 @@ class PledgesController < ApplicationController
 
   def new
     @pledge = Pledge.new
+    @reward = Reward.find(params[:reward_id])
   end
 
   def create
