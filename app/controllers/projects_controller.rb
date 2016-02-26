@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
     else
       Project.all
     end
-
     @categories = Category.all
   end
 
