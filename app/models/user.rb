@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :pledges
   has_many :rewards, through: :pledges
-  has_many :projects, through: :rewards
+  has_many :projects, -> { distinct }, through: :rewards
 
   has_many :created_projects, class_name: "Project", foreign_key: "creator_id"
 
@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
     self.created_projects.any?
   end
 
-
+  def reward_for_project(project)
+    self.rewards.where(project_id: project.id).last
+  end
 
 end
