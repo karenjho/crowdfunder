@@ -20,6 +20,7 @@
       </tr>
       <tr>
         <td><%= project.name %></td>
+        <td>$<%= project.pledges_total %></td>
         <td>$<%= project.goal %></td>
         <td><%= project.end_date.strftime('%A, %B %C at %r') %></td>
         <td><%= link_to "Edit", edit_project_path(project) %></td>
