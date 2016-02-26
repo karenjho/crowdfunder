@@ -60,22 +60,6 @@ ActiveRecord::Schema.define(version: 20160225195812) do
 
   add_index "rewards", ["project_id"], name: "index_rewards_on_project_id", using: :btree
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "taggings", ["project_id"], name: "index_taggings_on_project_id", using: :btree
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email",                                null: false
@@ -88,8 +72,5 @@ ActiveRecord::Schema.define(version: 20160225195812) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
-  add_foreign_key "pledges", "users"
   add_foreign_key "rewards", "projects"
-  add_foreign_key "taggings", "projects"
-  add_foreign_key "taggings", "tags"
 end
