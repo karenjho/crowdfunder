@@ -7,12 +7,12 @@ FactoryGirl.define do
     end_date Time.now.advance(months: 6)
   end
 
-  # factory :project_low_goal, class: "Project" do
-  #   name "Low Goal"
-  #   description "One hundred dollars ain't much. Spare some change?"
-  #   goal 100
-  #   start_date Time.now
-  #   end_date Time.now.advance(months: 6)
-  # end
+  factory :project_low_goal, class: "Project" do
+    name "Low Goal"
+    description "One hundred dollars ain't much. Spare some change?"
+    goal 100
+    start_date Time.now
+    end_date Time.now.advance(months: 6)
+  end
 
 end
