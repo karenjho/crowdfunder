@@ -34,7 +34,7 @@
       <li>
         Pledge $<%= reward.threshold %> or more<br>
         <%= reward.quantity %> Backers<br>
-        <%= link_to reward.name, new_reward_pledge_path(reward) %></strong><br>
+        <%= link_to reward.name, new_reward_pledge_path(reward), class: "pledge-link" %></strong><br>
         <%= reward.description %>
       </li>
     </ul>
