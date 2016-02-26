@@ -5,25 +5,7 @@
   <%= @user.email %>
 </div>
 
-<% if @user.pledges.any? %>
-<div class="pledges">
-<h2>Pledges</h2>
-<% @user.pledges.each do |pledge| %>
-  <table>
-    <tr>
-      <th>Project Name</th>
-      <th>Pledge Amount</th>
-      <th>Project Deadline</th>
-    </tr>
-    <tr>
-      <td><%= pledge.project.name %></td>
-      <td><%= pledge.amount %></td>
-      <td><%= pledge.project.end_date %></td>
-    </tr>
-  </table>
-  </div>
-  <% end %>
-<% end %>
+
 
 <% if @user.created_projects.any? %>
   <div class="projects">
@@ -39,7 +21,7 @@
       <tr>
         <td><%= project.name %></td>
         <td>$<%= project.goal %></td>
-        <td><%= project.end_date %></td>
+        <td><%= project.end_date.strftime('%A, %B %C at %r') %></td>
         <td><%= link_to "Edit", edit_project_path(project) %></td>
         <td><%= link_to "Delete Project", project_path(project), {method: :delete, data: {confirm: "ARE YOU SURE? This will delete all pledges and reward records for this project. This cannot be undone."}}%></td>
       </tr>

@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  mount_uploader :featured_image, ImageUploader
+
   has_many :rewards, -> { order "threshold ASC" }, dependent: :destroy # -> denotes scope block. Adds options to SQL statement. Must be placed right after the association name
   has_many :pledges, through: :rewards, dependent: :destroy
   has_many :users, through: :pledges

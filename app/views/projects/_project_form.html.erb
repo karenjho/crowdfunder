@@ -20,10 +20,18 @@
 
     <div id="categories" class="field">
        <div class="nested-fields">
-          <%=  f.label :category_id, "Category" %>
+          <%= f.label :category_id, "Category" %>
           <%= f.select :category_id, @categories %>
-      </div>
+        </div>
+
+    <div class="field">
+      <%= f.label :featured_image %>
+      <%= f.file_field :featured_image %>
     </div>
+
+  </div>
+
+>>>>>>> show_images
 
 
     <h3>Rewards</h3>
@@ -39,9 +47,6 @@
     <div class="action">
       <%= f.submit "Submit Project" %>
     </div>
-
-
     </div>
-
   <% end %>
 </div>
