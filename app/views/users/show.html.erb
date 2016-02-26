@@ -7,10 +7,10 @@
 
 
 
+<div class="projects">
+  <h2>Projects</h2>
+  <table border=1 cellspacing=0 cellpadding=10>
 <% if @user.created_projects.any? %>
-  <div class="projects">
-    <h2>Projects</h2>
-    <table>
       <tr>
         <th>Project Name</th>
         <th>Total Pledged</th>
@@ -26,7 +26,7 @@
         <td><%= link_to "Edit", edit_project_path(project) %></td>
         <td><%= link_to "Delete Project", project_path(project), {method: :delete, data: {confirm: "ARE YOU SURE? This will delete all pledges and reward records for this project. This cannot be undone."}}%></td>
       </tr>
+      <% end %>
     </table>
     </div>
-  <% end %>
 <% end %>
