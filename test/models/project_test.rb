@@ -24,17 +24,3 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
 end
-
-
-# def goal_achieved?(pledges_total)
-#   self.goal - pledges_total <= 0
-# end
-#
-# def pledges_total
-#   self.pledges.sum(:amount)
-# end
-#
-# def percent_achieved(pledges_total)
-#   percent = pledges_total.to_f * 100 / self.goal.to_f
-#   percent.round(2)
-# end
