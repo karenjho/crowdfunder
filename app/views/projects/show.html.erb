@@ -7,11 +7,11 @@
 
 
   <h2>Goal:</h2>
-  <% if @project.goal_achieved? %>
+  <% if @project.goal_achieved?(@project.pledges_total) %>
     <p>Project has been fully funded!</p>
   <% else %>
   <% end %>
-  <p><%= @project.percent_achieved %>% Funded</p>
+  <p><%= @project.percent_achieved(@project.pledges_total) %>% Funded</p>
   <p><%= @project.pledges_total %> / <%= @project.goal %></p>
 
   <h2>Ends <%= @project.end_date %></h2>

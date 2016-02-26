@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
   validates :end_date, presence:true
 
 
-  def goal_achieved?
+  def goal_achieved?(pledges_total)
     self.goal - pledges_total <= 0
   end
 
@@ -21,7 +21,7 @@ class Project < ActiveRecord::Base
     self.pledges.sum(:amount)
   end
 
-  def percent_achieved
+  def percent_achieved(pledges_total)
     percent = pledges_total.to_f * 100 / self.goal.to_f
     percent.round(2)
   end
