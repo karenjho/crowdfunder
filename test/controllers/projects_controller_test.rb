@@ -22,8 +22,10 @@ class ProjectsControllerTest < ActionController::TestCase
   # end
   #
   test "post create fails with empty params" do
-    post :create, project: {}
-    assert_response :error
+    assert_raises( ActionController::ParameterMissing ) {
+      post :create, project: {}
+    }
+
   end
 
   test "post create adds dummy reward with threshold 1" do
