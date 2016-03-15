@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :projects, -> { distinct }, through: :rewards
 
   has_many :created_projects, class_name: "Project", foreign_key: "creator_id"
+  # has_many :created_projects, class_name: Project, foreign_key: "creator_id"
 
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
